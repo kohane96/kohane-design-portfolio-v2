@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+
+
+/*スライドショー
+---------------------------------------------------------------------------*/
+/*３枚の画像の共通設定*/
+.slide {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	display: flex;
+	align-items: center;
+	opacity: 0;
+	transition: opacity 1s;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+/*写真を暗くする加工。写真の色を100%そのまま出したければこのブロックごと削除して下さい。*/
+.slide::before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	/*0,0,0は黒色のことで、0.5は色が50%出た状態。お好みで調整して下さい。*/
+}
+
+
+/*現在表示されているスライドのみをクリック可能にする設定（変更不要）
+---------------------------------------------------------------------------*/
+.slide {
+	pointer-events: none;
+	/* デフォルトでクリックを無効にする */
+}
+
+.slide.active {
+	pointer-events: auto;
+	/* 表示中のスライドのみクリックを有効にする */
+}
